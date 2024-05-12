@@ -8,14 +8,15 @@ function createBoxes(amount) {
   const boxes = document.querySelector("#boxes");
   let size = 30;
   destroyBoxes();
-  for (let i = 0; i < amount; i += 1) {
+  const boxesArray = Array.from({ length: amount }, () => {
     const box = document.createElement("div");
     box.style.width = `${size}px`;
     box.style.height = `${size}px`;
     box.style.backgroundColor = getRandomHexColor();
-    boxes.appendChild(box);
     size += 10;
-  }
+    return box;
+  });
+  boxes.append(...boxesArray);
 }
 
 function destroyBoxes() {
